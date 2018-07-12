@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/icon">
+        <file>HiramClient_Icon50.ico</file>
+    </qresource>
+</RCC>
