@@ -236,7 +236,7 @@ void MainWindow::on_btnRetry_clicked()
 //加载关闭当前进程，加载主进程
 void MainWindow::RunProcess()
 {
-    QThread::usleep(1000);
+    QThread::msleep(1000);
     QProcess exe;
     QString DirPath= qApp->applicationDirPath();
     DirPath.append("/HiramClient.exe");

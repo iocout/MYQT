@@ -149,7 +149,6 @@ void MyDownLoad::onFinished()
 //下载错误，关闭下载，上报错误，可自定义上报错误类型进行上报
 void MyDownLoad::onError(QNetworkReply::NetworkError)
 {
-
     QString strError=m_reply->errorString();
     qDebug() << "__________2 " + strError;
     closeDownload();

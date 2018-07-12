@@ -6,9 +6,11 @@
 #include<QSettings>
 #include<QMessageBox>
 #include<QProcess>
+#include<QThread>
 
 static const QString DOWNLOAD_FILE_SUFFIX = "_tmp";
 QString exeurl;
+static  bool isCancel=false;
 
 checkVersion::checkVersion(QWidget *parent) :
     QWidget(parent),
@@ -25,9 +27,7 @@ checkVersion::checkVersion(QWidget *parent) :
     mesUrl=value;
     value=tempArray+"HiramClient.exe";
     exeurl=value;
-
     v_network= new QNetworkAccessManager(this);
-
     //查询版本信息
     QNetworkRequest v_request;
     v_request.setUrl(QUrl(url));
@@ -46,12 +46,17 @@ checkVersion::checkVersion(QWidget *parent) :
 
 checkVersion::~checkVersion()
 {
+    qDebug()<<"execute delete checkversion"<<endl;
     delete ui;
 }
 
 //版本检测
 void checkVersion::isversion()
 {
+    if(!isCancel)
+    {
+       this->close();
+    }
     QByteArray data=v_reply->readAll();
     QString v_version;
     v_version.append("v");
@@ -83,10 +88,6 @@ void checkVersion::isversion()
     }
     //此处调用show不会一闪而过
     qDebug()<<"net is: "<<v_version<<" and local is : "<<version<<endl;
-    QProcess p;
-    QString c = "taskkill    /F   /IM  Hiramclient.exe";
-    p.execute(c);
-    p.close();
     this->show();
     file.close();
 }
@@ -110,6 +111,10 @@ void checkVersion::MessageShow()
 
 void checkVersion::on_btnOk_clicked()
 {
+    QProcess p;
+    QString c("taskkill    /F   /IM  Hiramclient.exe") ;
+    p.execute(c);
+    p.close();
     this->close();
     MainWindow * w= new MainWindow();
     w->setWindowFlag(Qt::Window);
