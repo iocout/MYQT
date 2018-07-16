@@ -4,12 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui network concurrent
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Update
 TEMPLATE = app
+CONFIG +=C++11
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
@@ -25,10 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    updatewin.cpp \
+    method.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    updatewin.h \
+    method.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    updatewin.ui
+
+
+INCLUDEPATH += C:/quazip/include
+LIBS += -LC:/quazip/lib -lquazip -LC:/zlib -lzlib1
+
+
+RC_ICONS =HiramClient_Icon50.ico
