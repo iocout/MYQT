@@ -104,7 +104,7 @@ void Method::onReadyRead()
     }
 }
 
-//下载完成
+//下载完成,文件名应该作为参数传进来，待优化
 void Method::onFinished()
 {
     m_isStop=true;

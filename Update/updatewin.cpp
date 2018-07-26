@@ -4,8 +4,9 @@
 #include<QMessageBox>
 #include<QThread>
 #include<QProcess>
+#include<QTimer>
 
-
+extern QTimer * timer;
 static const qint64 UNIT_KB=1024;
 static const qint64 UNIT_MB=1024*1024;
 static const qint64 UNIT_GB=1024*1024*1024;
@@ -130,6 +131,7 @@ void UpdateWin::onReplyFinished(int statusCode)
     {
         qDebug() << "Download Success";
         ui->labStatus->setText("下载成功");
+        timer->start();
     }
     qDebug()<<"statusCode:"<<statusCode<<endl;
     RunProcess();
@@ -213,7 +215,7 @@ void UpdateWin::RunProcess()
     //当前进程与外部进程脱钩
     bool success=exe.startDetached(DirPath,QStringList(DirPath));
     qDebug()<<"this path"<<DirPath<<endl;
-    this->deleteLater();
+    this->hide();
 }
 
 
