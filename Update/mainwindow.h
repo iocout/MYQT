@@ -5,6 +5,7 @@
 #include <QtNetwork/QNetworkReply>
 #include <QtNetwork/QNetworkAccessManager>
 #include<QUrl>
+#include<QLocalServer>
 namespace Ui {
 class MainWindow;
 }
@@ -35,6 +36,10 @@ private slots:
 
     void Showupdata();//检测版本
 
+    void initLocalConnection();//服务器模型创建单实例
+
+    void newLocalConnection();//服务器模型创建单实例
+
 private:
     Ui::MainWindow *ui;
     QNetworkAccessManager * c_network;
@@ -43,6 +48,8 @@ private:
     QString uproad;
     QNetworkRequest c_request;
     bool firstopen;
+    bool isRuning;//程序是否已经运行
+    QLocalServer * server;
 };
 
 

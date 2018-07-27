@@ -7,6 +7,7 @@
 #include<QString>
 #include<QObject>
 #include<QDir>
+#include<QThread>
 #include"JlCompress.h"
 
 static const QString DOWNLOAD_FILE_SUFFIX = "_tmp";
@@ -124,7 +125,7 @@ void Method::onFinished()
             QString road =dir.currentPath();
             zip.extractDir(m_fileName,"");
             removeFile(m_fileName);//移除zip文件
-            //更换ini文件
+            //更换ini文件,可能会出现异步，先sleep
             removeFile("update.ini");
             QFile::rename("tmp/update.ini","update.ini");
         }
@@ -190,7 +191,10 @@ void Method::removeFile(QString fileName)
     QFileInfo fileInfo(fileName);
     if(fileInfo.exists())
     {
-        QFile::remove(fileName);
+        while(QFile::remove(fileName))
+        {
+            QThread::msleep(500);
+        }
     }
 }
 
