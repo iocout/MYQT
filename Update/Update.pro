@@ -44,3 +44,6 @@ LIBS += -LC:/quazip/lib -lquazip -LC:/zlib -lzlib1
 
 
 RC_ICONS =HiramClient_Icon50.ico
+
+RESOURCES += \
+    icon.qrc
