@@ -65,7 +65,6 @@ void MainWindow::on_btnOk_clicked()
     UpdateWin * w=new UpdateWin();
     w->setWindowFlag(Qt::Window);
     w->setDownUrl(uproad);
-    //置顶
     w->show();
 }
 
@@ -116,7 +115,7 @@ void MainWindow::Showupdata()
         {
             ui->MsgBox->setText(msgreply->readAll());
         });
-        //此处调用show不会一闪而过,一直最前
+        //此处调用show不会一闪而过  一直最前
         this->hide();
         setWindowFlags(this->windowFlags() | Qt::WindowStaysOnTopHint);
         this->showNormal();
@@ -139,15 +138,13 @@ void MainWindow::OnError(QNetworkReply::NetworkError)
 {
     if(c_reply->error())
         qDebug()<<c_reply->errorString()<<endl;
-    int box = QMessageBox::critical(this,
-                                    tr("Error"),
-                                    ("网络连接错误，请检查你的网络设置!"),
-                                    QMessageBox::Close);
-    if(box==QMessageBox::Close)
-    {
-        this->close();
-        exit(EXIT_FAILURE);
-    }
+    QMessageBox msgBox;
+    msgBox.setWindowTitle("错误");
+    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setText("网络连接错误，请检查你的网络设置");
+    msgBox.exec();
+    this->close();
+    exit(EXIT_FAILURE);
 }
 
 //关闭主界面
@@ -177,16 +174,16 @@ void MainWindow::TimeCkversion()
 
 void MainWindow::initLocalConnection()
 {
-        //1.先检测是否已经打开了一个例程
-        QSharedMemory memory;
-        //创建基于平台键值，win会在没有进程使用共享内存时销毁该memory,以此来判断是否已经运行了一个该例程
-        memory.setKey(QString("HiramClientUpdateService"));
-        if(!memory.create(1))
-        {
-            qDebug()<<"instance has establish!"<<endl;
-            isRuning=true;
-            exit(EXIT_SUCCESS);
-        }
+//    //1.先检测是否已经打开了一个例程
+//     QSharedMemory memory;
+//    //创建基于平台键值，win会在没有进程使用共享内存时销毁该memory,以此来判断是否已经运行了一个该例程
+//    memory.setKey(QString("HiramClientUpdateService"));
+//    if(!memory.create(1))
+//    {
+//        qDebug()<<"instance has establish!"<<endl;
+//        isRuning=true;
+//        exit(EXIT_SUCCESS);
+//    }
 
     //2.连接LocalServer
     QCoreApplication::setApplicationName("localserver");

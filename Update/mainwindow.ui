@@ -14,7 +14,7 @@
    <string>ERP更新日志</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="icon.qrc">
+   <iconset>
     <normaloff>:/ico/HiramClient_Icon50.ico</normaloff>:/ico/HiramClient_Icon50.ico</iconset>
   </property>
   <property name="styleSheet">
@@ -78,8 +78,6 @@
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="icon.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
