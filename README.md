@@ -1,2 +1,0 @@
-# MYQT
-my qt demo
