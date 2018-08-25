@@ -156,9 +156,7 @@ QString UpdateWin::transformTime(qint64 seconds)
     {
         int nMinute = seconds / 60;
         int nSecond = seconds - nMinute * 60;
-
         strValue = QString("%1m").arg(nMinute);
-
         if (nSecond > 0)
             strValue += strSpacing + QString("%1s").arg(nSecond);
     }
@@ -182,19 +180,14 @@ QString UpdateWin::transformTime(qint64 seconds)
         int nHour = (seconds - nDay * 60 * 60 * 24) / (60 * 60);
         int nMinute = (seconds - nDay * 60 * 60 * 24 - nHour * 60 * 60) / 60;
         int nSecond = seconds - nDay * 60 * 60 * 24 - nHour * 60 * 60 - nMinute * 60;
-
         strValue = QString("%1d").arg(nDay);
-
         if (nHour > 0)
             strValue += strSpacing + QString("%1h").arg(nHour);
-
         if (nMinute > 0)
             strValue += strSpacing + QString("%1m").arg(nMinute);
-
         if (nSecond > 0)
             strValue += strSpacing + QString("%1s").arg(nSecond);
     }
-
     return strValue;
 }
 
@@ -245,7 +238,6 @@ QString UpdateWin::transformUnit(qint64 bytes , bool isSpeed)
         bytes /= UNIT_GB;
         strUnit = " GB";
     }
-
     if (isSpeed)
     {
         strUnit += "/S";
