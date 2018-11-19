@@ -8,6 +8,7 @@
 #include <QFile>
 #include "zip.h"
 
+
 static const QString Url="http://localhost:8061/finishIn/getAllBody";
 static QTime time_tt;
 MainWindow::MainWindow(QWidget *parent) :

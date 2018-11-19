@@ -1,0 +1,11 @@
+﻿  Moc'ing protobuf_3_0.h...
+  Rcc'ing protobuf_3_0.qrc...
+  Uic'ing protobuf_3_0.ui...
+  RCC: Warning: No resources in 'G:\Study_qt\protobuf_3_0\protobuf_3_0\protobuf_3_0.qrc'.
+  main.cpp
+  protobuf_3_0.cpp
+  User.pb.cc
+  moc_protobuf_3_0.cpp
+  qrc_protobuf_3_0.cpp
+  protobuf_3_0.vcxproj -> G:\Study_qt\protobuf_3_0\Win32\Debug\protobuf_3_0.exe
+  protobuf_3_0.vcxproj -> G:\Study_qt\protobuf_3_0\Win32\Debug\protobuf_3_0.pdb (Full PDB)
